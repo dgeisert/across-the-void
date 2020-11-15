@@ -10,9 +10,11 @@ public class Ship : MonoBehaviour
     public Vector2 accMult, speedMult;
     Vector2 acceleration, speed;
     [SerializeField] ParticleSystem main, leftSeconday, rightSecondary, leftReverse, rigthReverse;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         Instance = this;
         Controls.forward.AddListener(Forward);
         Controls.left.AddListener(Left);
@@ -23,21 +25,37 @@ public class Ship : MonoBehaviour
 
     void Forward(bool press)
     {
+        if (press)
+        {
+            audioSource.Play();
+        }
         acceleration += (press ? 1 : -1) * new Vector2(0, accMult.y);
     }
 
     void Left(bool press)
     {
+        if (press)
+        {
+            audioSource.Play();
+        }
         acceleration += (press ? 1 : -1) * new Vector2(accMult.x, 0);
     }
 
     void Right(bool press)
     {
+        if (press)
+        {
+            audioSource.Play();
+        }
         acceleration -= (press ? 1 : -1) * new Vector2(accMult.x, 0);
     }
 
     void Reverse(bool press)
     {
+        if (press)
+        {
+            audioSource.Play();
+        }
         acceleration -= (press ? 1 : -1) * new Vector2(0, accMult.y);
     }
 
@@ -48,7 +66,7 @@ public class Ship : MonoBehaviour
         transform.localEulerAngles += Vector3.forward * Time.deltaTime * speed.x * speedMult.x;
         speed = Vector3.Scale(speed, drag);
 
-        InGameUI.Instance.AddPropellant(- Mathf.Abs(acceleration.x / 4 + acceleration.y) * Time.deltaTime * 20);
+        InGameUI.Instance.AddPropellant(-Mathf.Abs(acceleration.x / 4 + acceleration.y) * Time.deltaTime * 10);
 
         AnimateEngines();
     }

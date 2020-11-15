@@ -25,6 +25,10 @@ public class Game : MonoBehaviour
             {
                 Instance.score = value;
                 Instance.inGameUI.UpdateScore(value);
+                if(Instance.score >= 5)
+                {
+                    Instance.Victory();
+                }
             }
         }
     }
@@ -37,7 +41,7 @@ public class Game : MonoBehaviour
         pauseMenu.gameObject.SetActive(false);
         scoreScreen.gameObject.SetActive(false);
         inGameUI.gameObject.SetActive(true);
-        Score = 100;
+        Score = 0;
     }
 
     // Update is called once per frame

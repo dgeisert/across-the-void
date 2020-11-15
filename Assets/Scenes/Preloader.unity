@@ -259,7 +259,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8870384496451504434, guid: cb940ff5a5f7c42f0829fc5a872d9b81,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 18c152748e7c64a95bbc86987afa6f6e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02154ab17f6864885a23737f949658db, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

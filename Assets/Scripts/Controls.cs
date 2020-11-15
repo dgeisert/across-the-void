@@ -40,9 +40,9 @@ public class Controls : MonoBehaviour
 
     private void Update()
     {
-        if (Game.active)
+        if (!Game.active)
         {
-            
+            return;
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {

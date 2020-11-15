@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class tumble : Interactible
 {
-    Rigidbody rb;
+    protected Rigidbody rb;
     void Start()
     {
         rb = gameObject.AddComponent<Rigidbody>();
