@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    public static Ship Instance;
+    GameObject focus;
     public Vector2 drag;
     public Vector2 accMult, speedMult;
     Vector2 acceleration, speed;
@@ -11,10 +13,12 @@ public class Ship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         Controls.forward.AddListener(Forward);
         Controls.left.AddListener(Left);
         Controls.right.AddListener(Right);
         Controls.reverse.AddListener(Reverse);
+        Controls.interact.AddListener(Interact);
     }
 
     void Forward(bool press)
@@ -43,6 +47,8 @@ public class Ship : MonoBehaviour
         transform.position += transform.up * Time.deltaTime * speed.y * speedMult.y;
         transform.localEulerAngles += Vector3.forward * Time.deltaTime * speed.x * speedMult.x;
         speed = Vector3.Scale(speed, drag);
+
+        InGameUI.Instance.AddPropellant(- Mathf.Abs(acceleration.x / 4 + acceleration.y) * Time.deltaTime * 20);
 
         AnimateEngines();
     }
@@ -172,6 +178,19 @@ public class Ship : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        focus = other.gameObject;
+    }
+
+    private void Interact(bool pressed)
+    {
+        if (focus?.GetComponent<Interactible>() != null)
+        {
+            focus.GetComponent<Interactible>().Interact(pressed);
         }
     }
 }
