@@ -211,4 +211,13 @@ public class Ship : MonoBehaviour
             focus.GetComponent<Interactible>().Interact(pressed);
         }
     }
+
+    private void OnDestroy()
+    {
+        Controls.forward.RemoveListener(Forward);
+        Controls.left.RemoveListener(Left);
+        Controls.right.RemoveListener(Right);
+        Controls.reverse.RemoveListener(Reverse);
+        Controls.interact.RemoveListener(Interact);
+    }
 }

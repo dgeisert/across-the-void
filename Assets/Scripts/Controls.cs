@@ -7,6 +7,8 @@ public class BoolEvent : UnityEvent<bool> { }
 
 public class Controls : MonoBehaviour
 {
+    
+
     public static BoolEvent
     forward,
     left,
@@ -16,26 +18,11 @@ public class Controls : MonoBehaviour
 
     private void Awake()
     {
-        if (forward == null)
-        {
-            forward = new BoolEvent();
-        }
-        if (left == null)
-        {
-            left = new BoolEvent();
-        }
-        if (right == null)
-        {
-            right = new BoolEvent();
-        }
-        if (reverse == null)
-        {
-            reverse = new BoolEvent();
-        }
-        if (interact == null)
-        {
-            interact = new BoolEvent();
-        }
+        forward = new BoolEvent();
+        left = new BoolEvent();
+        right = new BoolEvent();
+        reverse = new BoolEvent();
+        interact = new BoolEvent();
     }
 
     private void Update()

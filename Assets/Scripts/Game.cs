@@ -42,6 +42,7 @@ public class Game : MonoBehaviour
         scoreScreen.gameObject.SetActive(false);
         inGameUI.gameObject.SetActive(true);
         Score = 0;
+        Game.active = true;
     }
 
     // Update is called once per frame
